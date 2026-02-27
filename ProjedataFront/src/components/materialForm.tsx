@@ -1,0 +1,49 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "./ui/button"
+
+import { Plus } from "lucide-react"
+import { Label } from "./ui/label"
+import { Input } from "./ui/input"
+import { useState } from "react"
+import { CreateUpdateMaterial } from "./postMaterial"
+
+export function FormMaterial(){
+    const [name, setName] = useState("");
+    const [quantity, setQuantity] = useState(0);
+
+    return(
+        <Dialog>
+            <DialogTrigger asChild><Button><Plus />Create Material</Button></DialogTrigger>
+
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Create a material</DialogTitle>
+                </DialogHeader>
+
+                <form className="w-full flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+                     
+                    <div className="flex flex-col gap-1">
+                    <Label>Material name</Label>
+                    <Input placeholder="Material" id="name" onChange={(e) => setName(e.target.value)} required/>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                    <Label>Material quantity</Label>
+                    <Input type="number" placeholder="Example: 10" id="price" onChange={(e) => setQuantity(Number(e.target.value))} required/>
+                    </div>
+
+                    <CreateUpdateMaterial url="raw_material" content="Raw Material" name={name} quantity={quantity} />
+
+                </form>
+
+            </DialogContent>
+        </Dialog>
+    )
+}

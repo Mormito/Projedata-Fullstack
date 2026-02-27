@@ -39,7 +39,7 @@ export function FormProduct(){
 
                     <div className="flex flex-col gap-1">
                     <Label>Product price</Label>
-                    <Input placeholder="Example: 12.50" id="price" onChange={(e) => setPrice(Number(e.target.value))} required/>
+                    <Input type="number" placeholder="Example: 12.50" id="price" onChange={(e) => setPrice(Number(e.target.value))} required/>
                     </div>
 
                     <CreateUpdateProduct url="product" content="Product" name={name} price={price} />
