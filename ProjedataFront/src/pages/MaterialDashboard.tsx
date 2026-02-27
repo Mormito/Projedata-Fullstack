@@ -1,5 +1,6 @@
 import { DeleteButton } from "@/components/deleteButton";
 import { GoBack } from "@/components/goBackButton";
+import { FormMaterial } from "@/components/material/materialForm";
 import {
   Table,
   TableBody,
@@ -10,7 +11,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import type { Material } from "@/interfaces/Interfaces";
-import { NotebookPen } from "lucide-react";
 import { useEffect, useState } from "react";
 
 function MaterialDashboard(){
@@ -43,7 +43,7 @@ function MaterialDashboard(){
                     <TableCell>{p.quantity}</TableCell>
                     <TableCell className="flex justify-center gap-4">
                         {p.id && <DeleteButton id={p.id} url={'raw_material'} content="Raw material"/>}
-                        <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>
+                        <FormMaterial option={false} id={p.id}/>
                     </TableCell>
                 </TableRow>
                 ))}

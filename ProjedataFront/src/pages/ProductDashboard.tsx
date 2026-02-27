@@ -1,5 +1,6 @@
 import { DeleteButton } from "@/components/deleteButton";
 import { GoBack } from "@/components/goBackButton";
+import { FormProduct } from "@/components/product/productForm";
 import {
   Table,
   TableBody,
@@ -42,7 +43,7 @@ function ProductDashboard(){
                     <TableCell>$ {p.price}</TableCell>
                     <TableCell className="flex justify-center gap-4">
                         {p.id && <DeleteButton id={p.id} url={'product'} content="Product"/>}
-                        <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>
+                        <FormProduct option={false} id={p.id}/>
                     </TableCell>
                 </TableRow>
 

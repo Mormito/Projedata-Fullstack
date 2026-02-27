@@ -6,25 +6,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button } from "./ui/button"
+import { Button } from "../ui/button"
 
-import { Plus } from "lucide-react"
-import { Label } from "./ui/label"
-import { Input } from "./ui/input"
+import { NotebookPen, Plus } from "lucide-react"
+import { Label } from "../ui/label"
+import { Input } from "../ui/input"
 import { CreateUpdateProduct } from "./postProduct"
 import { useState } from "react"
+import type { FormUpdateProps } from "@/interfaces/Interfaces"
 
-export function FormProduct(){
+export function FormProduct({ option, id }: FormUpdateProps){
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
 
     return(
         <Dialog>
-            <DialogTrigger asChild><Button><Plus />Create Product</Button></DialogTrigger>
+            <DialogTrigger asChild>{option == true ? <Button><Plus />Create Product</Button> : <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>}</DialogTrigger>
 
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Create a product</DialogTitle>
+                    <DialogTitle>{option == true ? "Create" : "Update"} a product</DialogTitle>
                     <DialogDescription>
                         This version can't add a relation between material and product. Please wait for a future update.
                     </DialogDescription>
@@ -39,10 +40,10 @@ export function FormProduct(){
 
                     <div className="flex flex-col gap-1">
                     <Label>Product price</Label>
-                    <Input type="number" placeholder="Example: 12.50" id="price" onChange={(e) => setPrice(Number(e.target.value))} required/>
+                    <Input type="text" placeholder="Example: 12.50" id="price" onChange={(e) => setPrice(Number(e.target.value))} required/>
                     </div>
 
-                    <CreateUpdateProduct url="product" content="Product" name={name} price={price} />
+                    <CreateUpdateProduct url="product" content="Product" id={id} name={name} price={price} />
 
                 </form>
 

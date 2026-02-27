@@ -1,10 +1,10 @@
 
 
-import { LayoutDashboard, Plus } from "lucide-react"
+import { LayoutDashboard } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom"
-import { FormProduct } from "@/components/productForm"
-import { FormMaterial } from "@/components/materialForm"
+import { FormProduct } from "@/components/product/productForm"
+import { FormMaterial } from "@/components/material/materialForm"
 
 export default function Home() {
   const navigate = useNavigate()
@@ -28,9 +28,9 @@ export default function Home() {
           Calculator Dashboard
         </Button>
 
-        <FormProduct />
+        <FormProduct option={true} />
 
-        <FormMaterial />
+        <FormMaterial option={true} />
 
       </div>
     </div>

@@ -6,25 +6,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button } from "./ui/button"
 
-import { Plus } from "lucide-react"
-import { Label } from "./ui/label"
-import { Input } from "./ui/input"
+import { NotebookPen, Plus } from "lucide-react"
 import { useState } from "react"
 import { CreateUpdateMaterial } from "./postMaterial"
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import type { FormUpdateProps } from "@/interfaces/Interfaces";
 
-export function FormMaterial(){
+
+export function FormMaterial({ option, id }: FormUpdateProps){
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(0);
 
     return(
         <Dialog>
-            <DialogTrigger asChild><Button><Plus />Create Material</Button></DialogTrigger>
+            <DialogTrigger asChild>{option == true ? <Button><Plus />Create Material</Button> : <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>}</DialogTrigger>
 
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Create a material</DialogTitle>
+                    <DialogTitle>{option == true ? "Create" : "Update"} a material</DialogTitle>
                 </DialogHeader>
 
                 <form className="w-full flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
@@ -39,7 +41,7 @@ export function FormMaterial(){
                     <Input type="number" placeholder="Example: 10" id="price" onChange={(e) => setQuantity(Number(e.target.value))} required/>
                     </div>
 
-                    <CreateUpdateMaterial url="raw_material" content="Raw Material" name={name} quantity={quantity} />
+                    <CreateUpdateMaterial url="raw_material" content="Raw Material" id={id} name={name} quantity={quantity}/>
 
                 </form>
 

@@ -28,10 +28,20 @@ export interface CalculateProductXMaterial {
     product_id?:number,
     product_name:string,
     quantity:number,
-}
+};
 
 export interface ButtonProps {
   id?: number;
   url: string;
   content: string;
-}
+};
+
+export interface FormOptionProps {
+  option: boolean;
+};
+
+export interface idGetter {
+    id?:number;
+};
+
+export interface FormUpdateProps extends idGetter, FormOptionProps {};
