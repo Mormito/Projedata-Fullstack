@@ -44,7 +44,7 @@ public class ProductMaterialsController {
         }
 
         if (data.rawMaterialID() != null){
-            productMaterialsData.setRawMaterialID(data.productID());
+            productMaterialsData.setRawMaterialID(data.rawMaterialID());
         }
 
         if (data.quantity() != null){

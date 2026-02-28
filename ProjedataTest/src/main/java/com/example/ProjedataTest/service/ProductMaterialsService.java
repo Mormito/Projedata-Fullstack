@@ -32,7 +32,7 @@ public class ProductMaterialsService {
         this.productMaterialsRepository = productMaterialsRepository;
     }
 
-    public record ProductMaterialsComplete(Long product_id, String product_name, String raw_material_name, Integer quantity) {}
+    public record ProductMaterialsComplete(Long id, Long product_id, String product_name, Long raw_material_id, String raw_material_name, Integer quantity) {}
 
     public record ProductXQuantity(Long product_id, String product_name, Integer quantity) {}
 
@@ -57,7 +57,7 @@ public class ProductMaterialsService {
                 throw new RuntimeException("Raw Material not found");
             }
 
-            return new ProductMaterialsComplete(productMaterial.getId(), product.getName(), rawMaterial.getName(), productMaterial.getQuantity());
+            return new ProductMaterialsComplete(productMaterial.getId(), product.getId(), product.getName(), rawMaterial.getId(), rawMaterial.getName(), productMaterial.getQuantity());
         }).toList();
     }
 
