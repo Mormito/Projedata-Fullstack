@@ -38,7 +38,7 @@ export function FormMaterial({ option, id }: FormUpdateProps){
 
                     <div className="flex flex-col gap-1">
                     <Label>Material quantity</Label>
-                    <Input type="number" placeholder="Example: 10" id="price" onChange={(e) => setQuantity(Number(e.target.value))} required/>
+                    <Input type="number" placeholder="Example: 10" id="quantity" onChange={(e) => setQuantity(Number(e.target.value))} required/>
                     </div>
 
                     <CreateUpdateMaterial url="raw_material" content="Raw Material" id={id} name={name} quantity={quantity}/>

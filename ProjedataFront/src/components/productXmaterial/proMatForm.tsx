@@ -97,7 +97,7 @@ export function FormProMat({ option, id }: FormUpdateProps){
                     </div>
 
                     <CreateUpdateProMat  url="product_materials"  content="Relation"  id={id}  productID={productID!}  rawMaterialID={rawMaterialID!}  quantity={quantity!} />
-
+                    
                 </form>
 
             </DialogContent>

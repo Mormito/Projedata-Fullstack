@@ -61,6 +61,24 @@ public class ProductMaterialsController {
         repository.delete(productMaterials);
     }
 
+    @DeleteMapping("/by-product/{productId}")
+    public void deleteByProductId(@PathVariable Long productId) {
+        List<ProductMaterials> relations = repository.findAll()
+                .stream()
+                .filter(pm -> pm.getProductID().equals(productId))
+                .toList();
+        repository.deleteAll(relations);
+    }
+
+    @DeleteMapping("/by-material/{materialId}")
+    public void deleteByMaterialId(@PathVariable Long materialId) {
+        List<ProductMaterials> relations = repository.findAll()
+                .stream()
+                .filter(pm -> pm.getRawMaterialID().equals(materialId))
+                .toList();
+        repository.deleteAll(relations);
+    }
+
     // GET
     @GetMapping
     public List<ProductMaterialsResponseDTO> getAll(){
