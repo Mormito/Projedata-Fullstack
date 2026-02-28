@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom"
 
+import "./App.css"
+
 import Home from "@/pages/Home"
 import ProductDashboard from "@/pages/ProductDashboard"
 import MaterialDashboard from "@/pages/MaterialDashboard"
-import ProductXMaterialsDashboard from "@/pages/ProductXMaterialsDashboard"
+import CalculatorDashboard from "./pages/CalculateDashboard"
+import DependencesDashboard from "@/pages/DependencesDashboard"
 
-import "./App.css"
 
 function App() {
   return (
@@ -16,8 +18,10 @@ function App() {
       <Route path="/products-dashboard" element={<ProductDashboard />} />
 
       <Route path="/materials-dashboard" element={<MaterialDashboard />} />
+      
+      <Route path="/dependences-dashboard" element={<DependencesDashboard />} />
 
-      <Route path="/productxmaterials-dashboard" element={<ProductXMaterialsDashboard />} />
+      <Route path="/calculator-dashboard" element={<CalculatorDashboard />} />
 
     </Routes>
   )

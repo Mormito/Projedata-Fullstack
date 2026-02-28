@@ -38,7 +38,6 @@ export function CreateUpdateMaterial({ id, name, quantity, url, content }: Creat
       toast.success(`${content} successfully updated!`);
     } else {
       toast.error("Failed to update");
-      console.log(response)
     }
     }
 

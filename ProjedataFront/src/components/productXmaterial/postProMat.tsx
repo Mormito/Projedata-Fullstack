@@ -1,19 +1,20 @@
-import type { Product, ButtonProps } from "@/interfaces/Interfaces";
+import type { ButtonProps, ProductMaterial } from "@/interfaces/Interfaces";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 
-interface CreateButtonProps extends Product, ButtonProps {}
+interface CreateButtonProps extends ProductMaterial, ButtonProps {}
 
-export function CreateUpdateProduct({ id, name, price, url, content }: CreateButtonProps) {
+export function CreateUpdateProMat({ id, productID, rawMaterialID, quantity, url, content }: CreateButtonProps) {
 
+    // product_materials
   async function handleCreate(){
     const response = await fetch(`http://localhost:8080/${url}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, price }),
+      body: JSON.stringify({ productID, rawMaterialID, quantity }),
     });
     
     if (response.ok) {
@@ -31,7 +32,7 @@ export function CreateUpdateProduct({ id, name, price, url, content }: CreateBut
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id, name, price }),
+      body: JSON.stringify({ id, productID, rawMaterialID, quantity }),
     });
     
     if (response.ok) {
@@ -42,14 +43,19 @@ export function CreateUpdateProduct({ id, name, price, url, content }: CreateBut
     }
 
     async function handleVerify(){
-
-        if (!name || name.trim() === "") {
-          toast.error("Name is required");
+    
+        if (productID === null || productID === undefined || quantity <= 0) {
+          toast.error("A product is required");
           return;
         }
-    
-        if (price === null || price === undefined || price <= 0) {
-          toast.error("Price must be greater than 0");
+
+        if (rawMaterialID === null || rawMaterialID === undefined || quantity <= 0) {
+          toast.error("A raw material is required");
+          return;
+        }
+
+        if (quantity === null || quantity === undefined || quantity <= 0) {
+          toast.error("A quantity is required");
           return;
         }
 
@@ -62,6 +68,6 @@ export function CreateUpdateProduct({ id, name, price, url, content }: CreateBut
     }
 
   return (
-    <Button type="submit" onClick={handleVerify}><Plus /> {id === undefined ? "Create" : "Update"} Product </Button>
+    <Button type="submit" onClick={handleVerify}><Plus /> {id === undefined ? "Create" : "Update"} Relation </Button>
   );
 }

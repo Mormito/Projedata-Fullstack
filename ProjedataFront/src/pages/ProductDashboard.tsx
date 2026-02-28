@@ -17,13 +17,15 @@ import { useEffect, useState } from "react"
 function ProductDashboard(){
     const [products, setProducts] = useState<Product[]>([]);
 
-        async function loadData() {
-            const res = await fetch("http://localhost:8080/product");
-            const data: Product[] = await res.json();
-            setProducts(data);
-        }
+    async function loadData() {
+        const res = await fetch("http://localhost:8080/product");
+        const data: Product[] = await res.json();
+        setProducts(data);
+    }
 
-    useEffect(() => {loadData()}, [])
+    useEffect(() => {
+        loadData()
+    }, [])
 
     return(
     <div className="w-10/12 lg:w-1/3 min-h-screen flex flex-col justify-center items-center mx-auto">
@@ -42,7 +44,7 @@ function ProductDashboard(){
                     <TableCell>{p.name}</TableCell>
                     <TableCell>$ {p.price}</TableCell>
                     <TableCell className="flex justify-center gap-4">
-                        {p.id && <DeleteButton id={p.id} url={'product'} content="Product"/>}
+                        {p.id && <DeleteButton id={p.id} url={'product'} content="Product" onDelete={loadData}/>}
                         <FormProduct option={false} id={p.id}/>
                     </TableCell>
                 </TableRow>

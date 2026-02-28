@@ -16,12 +16,13 @@ import { useEffect, useState } from "react";
 function MaterialDashboard(){
     const [materials, setMaterials] = useState<Material[]>([]);
 
+    async function loadData() {
+        const res = await fetch("http://localhost:8080/raw_material");
+        const data: Material[] = await res.json();
+        setMaterials(data);
+    }
+
     useEffect(() => {
-        async function loadData() {
-            const res = await fetch("http://localhost:8080/raw_material");
-            const data: Material[] = await res.json();
-            setMaterials(data);
-        }
         loadData()
     }, [])
 
@@ -42,7 +43,7 @@ function MaterialDashboard(){
                     <TableCell>{p.name}</TableCell>
                     <TableCell>{p.quantity}</TableCell>
                     <TableCell className="flex justify-center gap-4">
-                        {p.id && <DeleteButton id={p.id} url={'raw_material'} content="Raw material"/>}
+                        {p.id && <DeleteButton id={p.id} url={'raw_material'} content="Raw material" onDelete={loadData}/>}
                         <FormMaterial option={false} id={p.id}/>
                     </TableCell>
                 </TableRow>

@@ -9,10 +9,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import type { CalculateProductXMaterial } from "@/interfaces/Interfaces"
-import { NotebookPen, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react"
 
-function ProductDashboard(){
+function CalculatorDashboard(){
     const [objects, setObject] = useState<CalculateProductXMaterial[]>([]);
 
     useEffect(() => {
@@ -32,7 +31,7 @@ function ProductDashboard(){
                 <TableRow>
                     <TableHead className="text-left">ID</TableHead>
                     <TableHead className="text-center">Name</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead className="text-right">Quantity</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -52,4 +51,4 @@ function ProductDashboard(){
     )
 }
 
-export default ProductDashboard
+export default CalculatorDashboard

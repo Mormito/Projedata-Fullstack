@@ -21,7 +21,7 @@ export function FormProduct({ option, id }: FormUpdateProps){
 
     return(
         <Dialog>
-            <DialogTrigger asChild>{option == true ? <Button><Plus />Create Product</Button> : <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>}</DialogTrigger>
+            <DialogTrigger asChild>{option == true ? <Button className="w-full flex items-center gap-2 justify-center"><Plus />Create Product</Button> : <NotebookPen className="cursor-pointer hover:text-primary duration-200 ease-in-out"/>}</DialogTrigger>
 
             <DialogContent>
                 <DialogHeader>
