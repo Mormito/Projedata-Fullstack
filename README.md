@@ -1,12 +1,14 @@
 ## Como rodar/usar este projeto - Passo a Passo
 
-### Crie um docker
+### Crie um docker contêiner
 ```
 docker run --name postgres-stock -e POSTGRES_DB=stock -e POSTGRES_USER=mormito -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
   ```
-Após criar o Docker contêiner, basta instalar as dependências do back-end (API) e inicializar o "ProjedataTestApplication", isso irá criar um servidor HTTP na porta 8080 e também ira gerar as tabelas no banco de dados.
+Após essa etapa, baixe as dependências do back-end e inicialize o "ProjedataTestApplication", que é responsável pela inicialização do servidor HTTP e por criar e alimentar o banco com dados pré-gerados.
 
-### Baixe as depêndencias do projeto Vite e inicialize-o
+```Caso utilize o IntelliJ IDEA clique em: Icone do Maven → ProjedataTest → Lifecycle → package | Isso irá baixar as dependências```
+
+### Baixe as dependências do projeto Vite e inicialize-o
 ```npm i```
 ```npm run dev```
 Execute os comandos dentro da pasta "ProjedataFront" para inicializar um servidor HTTP na porta 5173.
