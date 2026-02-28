@@ -9,7 +9,7 @@ Após criar o Docker contêiner, basta instalar as dependências do back-end (AP
 ### Baixe as depêndencias do projeto Vite e inicialize-o
 ```npm i```
 ```npm run dev```
-Isso irá fazer com que um servidor HTTP na porta 5173.
+Execute os comandos dentro da pasta "ProjedataFront" para inicializar um servidor HTTP na porta 5173.
 
 O código Java é uma API, você pode acessar via URL ou utilizando ferramentas como Insomnia e Postman.
 O código Vite é uma interface, essa é a parte que você pode interagir com o sistema sem a utilização de comandos.
